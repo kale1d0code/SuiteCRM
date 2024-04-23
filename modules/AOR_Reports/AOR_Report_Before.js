@@ -4,19 +4,7 @@ $(document).ready(function(){
       data: {},
       dragAndDrop: false,
       selectable: false,
-      onDragStop: function(node, e,thing){
-//                    var target = $(document.elementFromPoint(e.pageX - window.pageXOffset, e.pageY - window.pageYOffset));
-//                    if(node.type != 'field'){
-//                        return;
-//                    }
-//                    if(target.closest('#fieldLines').length > 0){
-//                        addNodeToFields(node);
-//                        updateChartDimensionSelects();
-//                    }else if(target.closest('#conditionLines').length > 0){
-//                        addNodeToConditions(node);
-//                    }
-
-      },
+      onDragStop: function(node, e,thing) {},
       onCanMoveTo: function(){
         return false;
       }
@@ -107,7 +95,6 @@ $(document).ready(function(){
               dropConditionLine(node);
             }
           }
-
         },
         onCanMoveTo: function(){
           return false;
@@ -214,7 +201,6 @@ $(document).ready(function(){
       '.jqtree-toggler, .jqtree-title', //
       function(event) {
         var node = $(this).closest('li.jqtree_common').data('node');
-
         node.opened = !$(this).hasClass('jqtree-title');
 
         if(!node.loaded) {
@@ -222,7 +208,6 @@ $(document).ready(function(){
         }
 
         loadTreeLeafData(node);
-
         setNodeSelected(node);
 
         return true;
@@ -234,7 +219,6 @@ $(document).ready(function(){
       $('#module-name').html('');
       $('#fieldTreeLeafs').html('');
     }
-
 
     $('#report_module').change(function(){
       report_module = $(this).val();
@@ -249,9 +233,11 @@ $(document).ready(function(){
     $('#addChartButton').click(function(){
       loadChartLine({});
       updateChartDimensionSelects();
-
     });
 
+    $saveButtons = $('#SAVE_HEADER, #SAVE_FOOTER');
+    $saveButtons.prop('disabled', true);
+    
     report_module = $('#report_module').val();
     loadTreeData($('#report_module').val());
 
@@ -265,5 +251,6 @@ $(document).ready(function(){
       loadChartLine(val);
     });
     updateChartDimensionSelects();
+    $saveButtons.prop('disabled', false);
   });
 });
