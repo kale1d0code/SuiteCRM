@@ -857,11 +857,11 @@ div.fc-basic-view .fc-body .fc-row {
   width: 192px;
 }
 
-.modal-calendar-user-list #shared_ids_td {
+.modal-calendar-user-list td td:nth-child(2) {
   width: 128px;
 }
 
-.modal-calendar-user-list select[size]#shared_ids {
+.modal-calendar-user-list select[size] {
   height: 200px;
 }
 
